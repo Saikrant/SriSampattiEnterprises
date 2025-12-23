@@ -1,148 +1,202 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+
 import casementImage from '../assets/product-casement.png';
 import slidingImage from '../assets/product-sliding.png';
+import french from '../assets/french doors.png';
+import tiltturn from '../assets/tilt-and-turn-window.png';
+import fixedwindow from '../assets/fixed windows.jpeg';
+import liftandslide from '../assets/lift and slide doors.jpg';
 
 const Products = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const sliderRef = useRef(null);
 
     const products = [
         {
             title: "Sliding Systems",
-            description: "Heavy duty sections for higher and wider openings. Ideal for homes, villas, and high-rise buildings.",
+            description: "Heavy duty systems for wide openings in homes, villas, and high-rise buildings.",
             features: [
-                "✓ 2 track, 2.5 track, and 3 track options",
-                "✓ Bug mesh shutter option available",
-                "✓ Aluminum track for smooth operation",
-                "✓ Available in Prima, Eco & Royal Series"
+                "✓ 2T, 2.5T & 3T options",
+                "✓ Bug mesh shutter available",
+                "✓ Aluminum smooth track",
+                "✓ Prima, Eco & Royal Series"
             ],
             image: slidingImage,
             detailedInfo: {
-                series: [
-                    { name: "Prima Series", profiles: "60mm, 68mm, 78mm", tracks: "2T, 2.5T, 3T" },
-                    { name: "Eco Series", profiles: "68mm", tracks: "2T, 2.5T" },
-                    { name: "Royal Series", profiles: "82mm, 88mm", tracks: "2T, 2.5T, 3T" }
-                ],
                 specifications: [
-                    "Glass thickness: 5mm - 24mm",
-                    "Aluminum track for smooth operations",
-                    "Unique mosquito mesh inset",
-                    "Hurricane bar for high-rise buildings",
-                    "Heavy duty low threshold options"
-                ],
-                benefits: [
-                    "Bigger slopes for Indian monsoon conditions",
-                    "Multiple sash options available",
-                    "Extra web support for stability",
-                    "Provision of mosquito mesh for windows and doors"
+                    "Glass thickness: 5mm–24mm",
+                    "Low threshold option",
+                    "Integrated mosquito mesh"
                 ]
             }
         },
         {
-            title: "Casement Systems",
-            description: "3 & 5 chamber systems with 60mm & 65mm depth. Perfect for residential and commercial applications with excellent sealing.",
+            title: "Casement Windows",
+            description: "Premium inward & outward opening windows with excellent sealing and insulation.",
             features: [
-                "✓ 90° sash opening for easy cleaning",
-                "✓ Sturdy multipoint locking mechanism",
-                "✓ Double weather-stripping for noise reduction",
-                "✓ Available in Prima & Royal Series"
+                "✓ 90° sash opening",
+                "✓ Multipoint locking",
+                "✓ Double weather seal",
+                "✓ High wind resistance"
             ],
             image: casementImage,
             detailedInfo: {
-                series: [
-                    { name: "Prima Series", depth: "60mm", chambers: "3-chamber system" },
-                    { name: "Royal Series", depth: "65mm", chambers: "5-chamber system" }
-                ],
                 specifications: [
-                    "Glass thickness: 5mm - 38mm",
-                    "Outward opening with grill provision",
-                    "Inward opening with mesh on 4-inch wall",
-                    "Integral Euro groove for hardware fixing",
-                    "Striker plates and friction hinges mounted in steel"
-                ],
-                benefits: [
-                    "High energy saving",
-                    "Maximum air tightness and noise reduction",
-                    "90° sash opening for easy cleaning",
-                    "Flat bottom surface for easy mounting"
+                    "Glass thickness: 5mm–38mm",
+                    "Euro groove hardware",
+                    "Steel reinforcement"
                 ]
             }
         },
-
+        {
+            title: "Tilt & Turn Windows",
+            description: "Dual-function windows offering tilt ventilation and full opening.",
+            features: [
+                "✓ Tilt ventilation",
+                "✓ Full turn opening",
+                "✓ European hardware",
+                "✓ High security locks"
+            ],
+            image: tiltturn,
+            detailedInfo: {
+                specifications: [
+                    "Multi-locking points",
+                    "Heavy duty hinges",
+                    "Double glazing support"
+                ]
+            }
+        },
+        {
+            title: "Fixed Windows",
+            description: "Non-operable windows designed for maximum light and modern aesthetics.",
+            features: [
+                "✓ Maximum glass area",
+                "✓ Minimal frame design",
+                "✓ Low maintenance",
+                "✓ Cost effective"
+            ],
+            image: fixedwindow,
+            detailedInfo: {
+                specifications: [
+                    "Single & double glazing",
+                    "UV resistant profiles",
+                    "Custom sizes available"
+                ]
+            }
+        },
+        {
+            title: "French Doors",
+            description: "Elegant double door systems offering wide openings and premium appearance.",
+            features: [
+                "✓ Wide opening design",
+                "✓ Multipoint locking",
+                "✓ Heavy duty hinges",
+                "✓ Premium handles"
+            ],
+            image: french,
+            detailedInfo: {
+                specifications: [
+                    "Toughened glass support",
+                    "High wind load resistance",
+                    "Custom color options"
+                ]
+            }
+        },
+        {
+            title: "Lift & Slide Doors",
+            description: "Advanced sliding systems for very large openings with effortless movement.",
+            features: [
+                "✓ Lift mechanism",
+                "✓ Extra-large shutters",
+                "✓ Premium rollers",
+                "✓ Noise-free sliding"
+            ],
+            image: liftandslide,
+            detailedInfo: {
+                specifications: [
+                    "Glass thickness up to 42mm",
+                    "High load bearing rollers",
+                    "Low threshold option"
+                ]
+            }
+        }
     ];
 
-    const openModal = (product) => {
-        setSelectedProduct(product);
-    };
-
-    const closeModal = () => {
-        setSelectedProduct(null);
+    const scrollSlider = (dir) => {
+        sliderRef.current.scrollBy({
+            left: dir === 'right' ? 380 : -380,
+            behavior: 'smooth'
+        });
     };
 
     return (
         <>
             <section id="products" className="products">
                 <div className="container">
+
                     <div className="section-header">
                         <span className="section-badge">Our Product Range</span>
                         <h2>Premium uPVC Systems</h2>
-                        <p>Powered by high-quality Sudhakar Profiles for every need</p>
+                        <p>Powered by high-quality Sudhakar Profiles</p>
                     </div>
-                    <div className="products-grid">
-                        {products.map((product, index) => (
-                            <div key={index} className="product-card">
-                                <div className="product-image">
-                                    <img src={product.image} alt={product.title} style={{ width: '100%', height: '400px', objectFit: 'contain' }} />
-                                </div>
+
+                    <div className="products-slider-header">
+                        <button className="slider-btn" onClick={() => scrollSlider('left')}>‹</button>
+                        <button className="slider-btn" onClick={() => scrollSlider('right')}>›</button>
+                    </div>
+
+                    <div className="products-slider" ref={sliderRef}>
+                        {products.map((product, i) => (
+                            <div key={i} className="product-card slider-card">
+
+                                {/* IMAGE AS BACKGROUND */}
+                                <div
+                                    className="product-image"
+                                    style={{
+                                        backgroundImage: `url(${product.image})`
+                                    }}
+                                />
+
                                 <div className="product-content">
                                     <h3>{product.title}</h3>
                                     <p>{product.description}</p>
+
                                     <ul className="product-features">
-                                        {product.features.map((feature, idx) => (
-                                            <li key={idx}>{feature}</li>
+                                        {product.features.map((f, idx) => (
+                                            <li key={idx}>{f}</li>
                                         ))}
                                     </ul>
-                                    <button onClick={() => openModal(product)} className="btn btn-primary btn-full">Learn More</button>
+
+                                    <button
+                                        className="btn btn-primary btn-full"
+                                        onClick={() => setSelectedProduct(product)}
+                                    >
+                                        Learn More
+                                    </button>
                                 </div>
+
                             </div>
                         ))}
                     </div>
+
                 </div>
             </section>
 
+            {/* MODAL */}
             {selectedProduct && (
-                <div className="modal-overlay" onClick={closeModal}>
+                <div className="modal-overlay" onClick={() => setSelectedProduct(null)}>
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <button className="modal-close" onClick={closeModal}>&times;</button>
-                        <h2>{selectedProduct.title}</h2>
+                        <button className="modal-close" onClick={() => setSelectedProduct(null)}>
+                            &times;
+                        </button>
 
-                        <div className="modal-section">
-                            <h3>Available Series</h3>
-                            <div className="series-list">
-                                {selectedProduct.detailedInfo.series.map((series, idx) => (
-                                    <div key={idx} className="series-item">
-                                        <h4>{series.name}</h4>
-                                        {Object.entries(series).filter(([key]) => key !== 'name').map(([key, value]) => (
-                                            <p key={key}><strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}</p>
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        <h2>{selectedProduct.title}</h2>
 
                         <div className="modal-section">
                             <h3>Technical Specifications</h3>
                             <ul className="spec-list">
-                                {selectedProduct.detailedInfo.specifications.map((spec, idx) => (
-                                    <li key={idx}>{spec}</li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div className="modal-section">
-                            <h3>Key Benefits</h3>
-                            <ul className="benefits-list">
-                                {selectedProduct.detailedInfo.benefits.map((benefit, idx) => (
-                                    <li key={idx}>{benefit}</li>
+                                {selectedProduct.detailedInfo.specifications.map((s, i) => (
+                                    <li key={i}>{s}</li>
                                 ))}
                             </ul>
                         </div>

@@ -21,7 +21,9 @@ const CompanyHistory = () => {
                                 </svg>
                             </div>
                             <h3>European Technology</h3>
-                            <p>German-engineered profiles designed to withstand high UV radiation and extreme temperatures of the Indian climate.</p>
+                            <p>
+                                German-engineered uPVC profiles designed to perform reliably under high UV exposure and extreme Indian weather conditions.
+                            </p>
                         </div>
 
                         <div className="highlight-card">
@@ -32,7 +34,9 @@ const CompanyHistory = () => {
                                 </svg>
                             </div>
                             <h3>Certified Quality</h3>
-                            <p>RoHS compliant and CIPET tested. Lead-free materials ensuring environmental sustainability and safety.</p>
+                            <p>
+                                Products are RoHS compliant and CIPET tested, ensuring safety, durability, and adherence to international quality standards.
+                            </p>
                         </div>
 
                         <div className="highlight-card">
@@ -48,7 +52,9 @@ const CompanyHistory = () => {
                                 </svg>
                             </div>
                             <h3>Manufacturing Excellence</h3>
-                            <p>State-of-the-art extrusion units in Suryapet and Tirupati, delivering premium quality consistently.</p>
+                            <p>
+                                Modern extrusion facilities equipped with advanced machinery to ensure consistent quality and precision manufacturing.
+                            </p>
                         </div>
 
                         <div className="highlight-card">
@@ -59,7 +65,9 @@ const CompanyHistory = () => {
                                 </svg>
                             </div>
                             <h3>Sustainability First</h3>
-                            <p>100% recyclable materials, energy-efficient production, and eco-friendly operations for a greener future.</p>
+                            <p>
+                                Manufactured using lead-free, recyclable materials with a strong focus on environmental responsibility.
+                            </p>
                         </div>
                     </div>
 
@@ -68,15 +76,21 @@ const CompanyHistory = () => {
                         <div className="cert-list">
                             <div className="cert-badge">
                                 <span className="cert-name">RoHS Compliant</span>
-                                <span className="cert-desc">Restriction of Hazardous Substances</span>
+                                <span className="cert-desc">
+                                    Ensures products are free from restricted hazardous substances for enhanced safety.
+                                </span>
                             </div>
                             <div className="cert-badge">
                                 <span className="cert-name">CIPET Tested</span>
-                                <span className="cert-desc">Physical & Chemical Testing</span>
+                                <span className="cert-desc">
+                                    Tested for physical and chemical properties to meet industry quality benchmarks.
+                                </span>
                             </div>
                             <div className="cert-badge">
                                 <span className="cert-name">Lead-Free</span>
-                                <span className="cert-desc">Safe for Environment</span>
+                                <span className="cert-desc">
+                                    Manufactured without lead, making products safe for users and the environment.
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -85,12 +99,22 @@ const CompanyHistory = () => {
                         <h3>Our Facilities</h3>
                         <div className="location-grid">
                             <div className="location-card">
-                                <h4>Extrusion Unit - Suryapet</h4>
-                                <p>Sy. No. 74/P, 75/P, 77/P & 85/P, Balaram Thanda, Near Industrial Estate, Suryapet, Telangana-508 213</p>
+                                <h4>Extrusion Unit – Suryapet</h4>
+                                <p>
+                                    Advanced production facility supporting high-volume manufacturing with strict quality control standards.
+                                </p>
+                                <p>
+                                    Sy. No. 74/P, 75/P, 77/P & 85/P, Balaram Thanda, Near Industrial Estate, Suryapet, Telangana – 508213
+                                </p>
                             </div>
                             <div className="location-card">
-                                <h4>Extrusion Unit - Tirupati</h4>
-                                <p>Survey No. 522/1, 522/2A & 1005/2, Yeguvarajupalem(V), Tirupati Dist. A.P.-524 410</p>
+                                <h4>Extrusion Unit – Tirupati</h4>
+                                <p>
+                                    Strategically located unit ensuring efficient production and supply across southern regions.
+                                </p>
+                                <p>
+                                    Survey No. 522/1, 522/2A & 1005/2, Yeguvarajupalem(V), Tirupati Dist., A.P. – 524410
+                                </p>
                             </div>
                         </div>
                     </div>

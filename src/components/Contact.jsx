@@ -1,26 +1,107 @@
 import React, { useState } from 'react';
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
-        email: '',
-        message: ''
+        location: '',
+        requirement: ''
     });
 
+    const [errors, setErrors] = useState({});
+
+    const getCurrentLocation = async () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                async (position) => {
+                    const { latitude, longitude } = position.coords;
+                    try {
+                        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
+                        const data = await response.json();
+                        const address = data.display_name || `Lat: ${latitude.toFixed(6)}, Lng: ${longitude.toFixed(6)}`;
+                        setFormData({
+                            ...formData,
+                            location: address
+                        });
+                        setErrors({ ...errors, location: '' });
+                    } catch (error) {
+                        console.error('Error fetching address:', error);
+                        setFormData({
+                            ...formData,
+                            location: `Lat: ${latitude.toFixed(6)}, Lng: ${longitude.toFixed(6)}`
+                        });
+                        setErrors({ ...errors, location: 'Unable to fetch address. Using coordinates.' });
+                    }
+                },
+                (error) => {
+                    console.error('Error getting location:', error);
+                    setErrors({ ...errors, location: 'Unable to get current location. Please enter manually.' });
+                }
+            );
+        } else {
+            setErrors({ ...errors, location: 'Geolocation is not supported by this browser.' });
+        }
+    };
+
+    const validate = () => {
+        let tempErrors = {};
+        if (!formData.name.trim()) {
+            tempErrors.name = "Name is required";
+        } else if (!/^[a-zA-Z\s]+$/.test(formData.name.trim())) {
+            tempErrors.name = "Name should contain only letters and spaces";
+        }
+        if (!formData.phone.trim()) {
+            tempErrors.phone = "Phone is required";
+        } else if (!isValidPhoneNumber(formData.phone)) {
+            tempErrors.phone = "Enter a valid phone number";
+        }
+        if (!formData.location.trim()) {
+            tempErrors.location = "Location is required";
+        }
+        if (!formData.requirement.trim()) {
+            tempErrors.requirement = "Requirement is required";
+        }
+        setErrors(tempErrors);
+        return Object.keys(tempErrors).length === 0;
+    };
+
     const handleChange = (e) => {
+        const { id, value } = e.target;
         setFormData({
             ...formData,
-            [e.target.id]: e.target.value
+            [id]: value
+        });
+        // Clear error for the field being changed
+        setErrors({
+            ...errors,
+            [id]: ''
+        });
+    };
+
+    const handlePhoneChange = (value) => {
+        setFormData({
+            ...formData,
+            phone: value || ''
+        });
+        // Clear error for phone
+        setErrors({
+            ...errors,
+            phone: ''
         });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!validate()) {
+            return;
+        }
         // Handle form submission logic here
         console.log('Form submitted:', formData);
         alert('Thank you for your message! We will get back to you soon.');
-        setFormData({ name: '', phone: '', email: '', message: '' });
+        setFormData({ name: '', phone: '', location: '', requirement: '' });
+        setErrors({});
     };
 
     return (
@@ -99,46 +180,61 @@ const Contact = () => {
                     <div className="contact-form-wrapper">
                         <form className="contact-form" onSubmit={handleSubmit}>
                             <div className="form-group">
-                                <label htmlFor="name">Full Name</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    placeholder="John Doe"
-                                    required
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                />
+                                <div className="form-floating">
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        placeholder="Full Name"
+                                        required
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                    />
+                                    <label htmlFor="name">Full Name</label>
+                                </div>
+                                {errors.name && <span className="error">{errors.name}</span>}
                             </div>
                             <div className="form-group">
-                                <label htmlFor="phone">Phone Number</label>
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    placeholder="+91 98765 43210"
-                                    required
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                />
+                                <div className={`form-floating phone-floating ${formData.phone ? 'has-value' : ''}`}>
+                                    <PhoneInput
+                                        international
+                                        defaultCountry="IN"
+                                        value={formData.phone}
+                                        onChange={handlePhoneChange}
+                                        placeholder="Enter phone number"
+                                        required
+                                    />
+                                    <label htmlFor="phone">Phone Number</label>
+                                </div>
+                                {errors.phone && <span className="error">{errors.phone}</span>}
                             </div>
                             <div className="form-group">
-                                <label htmlFor="email">Email Address</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    placeholder="john@example.com"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                />
+                                <div className="form-floating">
+                                    <input
+                                        type="text"
+                                        id="location"
+                                        placeholder="Location"
+                                        required
+                                        value={formData.location}
+                                        onChange={handleChange}
+                                    />
+                                    <label htmlFor="location">Location</label>
+                                </div>
+                                {/* <button type="button" className="btn btn-outline" onClick={getCurrentLocation} style={{ marginTop: '0.5rem', fontSize: '0.875rem' }}>Use Current Location</button> */}
+                                {errors.location && <span className="error">{errors.location}</span>}
                             </div>
                             <div className="form-group">
-                                <label htmlFor="message">Message</label>
-                                <textarea
-                                    id="message"
-                                    rows="4"
-                                    placeholder="Tell us about your requirements..."
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                ></textarea>
+                                <div className="form-floating">
+                                    <textarea
+                                        id="requirement"
+                                        rows="4"
+                                        placeholder="Tell us about your requirements..."
+                                        required
+                                        value={formData.requirement}
+                                        onChange={handleChange}
+                                    ></textarea>
+                                    <label htmlFor="requirement">Tell us about your requirements...</label>
+                                </div>
+                                {errors.requirement && <span className="error">{errors.requirement}</span>}
                             </div>
                             <button type="submit" className="btn btn-primary btn-full">Send Message</button>
                         </form>

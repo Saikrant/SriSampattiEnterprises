@@ -15,7 +15,7 @@ const Process = () => {
         {
             number: 3,
             title: "Manufacturing",
-            description: "Custom fabrication using Sudhakar Profiles."
+            description: "Profiles are manufactured using advanced machinery and strict quality standards."
         },
         {
             number: 4,

@@ -4,7 +4,7 @@ const Testimonials = () => {
     const testimonials = [
         {
             name: "Rahul Sharma",
-            role: "Homeowner, Hyderabad",
+            role: "Homeowner, Telangana",
             text: "Absolutely thrilled with our new windows! The noise reduction is incredible and they look fantastic."
         },
         {

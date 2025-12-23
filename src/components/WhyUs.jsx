@@ -9,8 +9,8 @@ const WhyUs = () => {
                     <path d="M9 12l2 2 4-4"></path>
                 </svg>
             ),
-            title: "Authorized Fabricator",
-            description: "Official partner of Sudhakar Profiles, ensuring authentic quality and warranty."
+            title: "Authorized Partner",
+            description: "Official partner of Sudhakar Profiles, ensuring genuine materials, quality assurance, and warranty support."
         },
         {
             icon: (
@@ -20,7 +20,7 @@ const WhyUs = () => {
                 </svg>
             ),
             title: "German Technology",
-            description: "State-of-the-art manufacturing utilizing precision German machinery."
+            description: "Advanced systems designed with German technology for strength, durability, and long-lasting performance."
         },
         {
             icon: (
@@ -32,7 +32,7 @@ const WhyUs = () => {
                 </svg>
             ),
             title: "Expert Installation",
-            description: "Professional team ensuring seamless and hassle-free installation."
+            description: "Skilled installation team delivering precise fitting and clean finishing."
         },
         {
             icon: (
@@ -42,7 +42,7 @@ const WhyUs = () => {
                 </svg>
             ),
             title: "Timely Delivery",
-            description: "Commitment to project timelines with efficient process management."
+            description: "Well-planned execution ensuring projects are completed on schedule."
         },
         {
             icon: (
@@ -53,7 +53,7 @@ const WhyUs = () => {
                 </svg>
             ),
             title: "Custom Solutions",
-            description: "Tailored window and door systems designed for your specific needs."
+            description: "Customized window and door solutions to match your space and design requirements."
         },
         {
             icon: (
@@ -62,7 +62,7 @@ const WhyUs = () => {
                 </svg>
             ),
             title: "After-Sales Support",
-            description: "Dedicated maintenance and support services for your peace of mind."
+            description: "Reliable after-sales service and support to ensure long-term satisfaction."
         }
     ];
 
@@ -70,7 +70,9 @@ const WhyUs = () => {
         <section id="why-us" className="why-us">
             <div className="container">
                 <div className="section-header">
-                    <span className="section-badge" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', borderColor: 'rgba(255,255,255,0.2)' }}>Why Choose Us</span>
+                    <span className="section-badge" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', borderColor: 'rgba(255,255,255,0.2)' }}>
+                        Why Choose Us
+                    </span>
                     <h2>Why Sri Sampatti Enterprises?</h2>
                     <p>Your trusted partner for premium uPVC solutions.</p>
                 </div>

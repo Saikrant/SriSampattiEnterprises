@@ -2,19 +2,40 @@
 /* For now, we paste the original CSS content */
 
 :root {
-    --primary-color: #2563eb;
-    --primary-dark: #1d4ed8;
-    --secondary-color: #1e293b;
-    --text-color: #334155;
-    --light-bg: #f8fafc;
-    --pattern-bg: radial-gradient(#cbd5e1 1px, transparent 1px);
-    /* Add subtle pattern to light bg */
-    --pattern-bg: radial-gradient(#e2e8f0 1px, transparent 1px);
-    --white: #ffffff;
-    --border-color: #e2e8f0;
-    --success-color: #22c55e;
+    /* Primary Brand Colors */
+    --primary-color: #2563EB;      /* Royal Blue */
+    --primary-dark: #1D4ED8;       /* Deep Blue (hover/gradient) */
+
+    /* Text & Headings */
+    --secondary-color: #1E293B;    /* Slate Navy (headings, footer bg) */
+    --text-color: #334155;         /* Cool Gray (body text) */
+
+    /* Backgrounds */
+    --white: #FFFFFF;
+    --light-bg: #F8FAFC;           /* Section backgrounds */
+    --hover-bg: #1D4ED8;           /* Used in hover cards */
+
+    /* Borders & Dividers */
+    --border-color: #E2E8F0;
+
+    /* Accents */
+    --success-color: #22C55E;      /* Success / CTA highlight */
+
+    /* Subtle Pattern */
+    --pattern-bg: radial-gradient(#E2E8F0 1px, transparent 1px);
+
+    /* Shadows */
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+
+    /* Layout */
+    --section-padding: 5rem 0;
+
+    /* Transitions */
     --transition: all 0.3s ease;
 }
+
 
 * {
     margin: 0;
@@ -578,18 +599,8 @@ ul {
     border-color: rgba(37, 99, 235, 0.2);
 }
 
-.product-image {
-    overflow: hidden;
-    position: relative;
-}
 
-.product-image img {
-    transition: transform 0.6s ease;
-}
 
-.product-card:hover .product-image img {
-    transform: scale(1.08);
-}
 
 .product-image .image-placeholder {
     height: 250px;
@@ -1029,9 +1040,11 @@ ul {
 .cert-list {
     display: flex;
     justify-content: center;
+    align-items: stretch;
     gap: 2rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;        /* KEY: same row */
 }
+
 
 .cert-badge {
     background: linear-gradient(135deg, var(--white) 0%, #f8fafc 100%);
@@ -1243,6 +1256,154 @@ ul {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
+
+.error {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* ===============================
+   Natural Material Floating Labels
+   =============================== */
+
+.form-floating {
+    position: relative;
+    margin-bottom: 1.75rem;
+}
+
+/* Input & Textarea */
+.form-floating input,
+.form-floating textarea {
+    width: 100%;
+    padding: 18px 14px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 16px;
+    background-color: var(--white);
+    transition: border-color 0.25s ease;
+    color: #000000;
+}
+
+.form-floating textarea {
+    min-height: 50px;
+    resize: vertical;
+}
+
+/* Phone input group */
+.phone-input-group {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--white);
+    transition: border-color 0.25s ease;
+}
+
+.phone-input-group:focus-within {
+    border-color: var(--primary-color);
+}
+
+.phone-input-group select {
+    flex-shrink: 0;
+    width: 110px;
+    padding: 18px 12px;
+    border: none;
+    font-family: inherit;
+    font-size: 16px;
+    background-color: transparent;
+    outline: none;
+    position: relative;
+}
+
+.phone-input-group select::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 60%;
+    background-color: var(--border-color);
+}
+
+.phone-input-group input {
+    flex: 1;
+    padding: 18px 14px;
+    border: none;
+    font-family: inherit;
+    font-size: 16px;
+    background-color: transparent;
+    outline: none;
+}
+
+.form-floating input:focus,
+.form-floating input:hover,
+.form-floating textarea:focus,
+.form-floating textarea:hover,
+.form-floating:focus-within input,
+.form-floating:focus-within textarea,
+.form-floating:hover input,
+.form-floating:hover textarea {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Hide placeholder visually (keep for logic) */
+.form-floating input::placeholder,
+.form-floating textarea::placeholder {
+    color: transparent;
+}
+
+/* Label – default */
+.form-floating label {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    color: #64748b;
+    pointer-events: none;
+    padding: 0 6px;
+    background-color: var(--white);
+    transition: all 0.25s ease;
+}
+
+/* Special for textarea */
+.form-floating textarea + label {
+    top: 18px;
+    transform: none;
+}
+
+/* Special for phone */
+.phone-floating label {
+    left: 124px;
+}
+
+/* Floating state */
+.form-floating input:focus + label,
+.form-floating input:hover + label,
+.form-floating input:not(:placeholder-shown) + label,
+.form-floating textarea:focus + label,
+.form-floating textarea:hover + label,
+.form-floating textarea:not(:placeholder-shown) + label,
+.phone-input-group input:focus + label,
+.phone-input-group input:hover + label,
+.phone-input-group input:not(:placeholder-shown) + label {
+    top: -4px;
+    font-size: 12.5px;
+    color: var(--primary-color);
+}
+
+/* Special floating left for phone */
+.phone-floating .phone-input-group input:focus + label,
+.phone-floating .phone-input-group input:hover + label,
+.phone-floating .phone-input-group input:not(:placeholder-shown) + label {
+    left: 124px;
+}
+
 
 /* Modal Styles */
 .modal-overlay {
@@ -1743,4 +1904,297 @@ ul {
     margin: 0 auto;
     border: 3px solid #fff;
     box-shadow: 0 0 0 1px #cbd5e1;
+}
+
+/* Mobile Call Buttons */
+.mobile-call-buttons {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-call-buttons {
+        display: block;
+    }
+
+    .mobile-call-floating {
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+        color: var(--white);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-call-floating:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+    }
+
+    .mobile-call-sticky {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+        color: var(--white);
+        text-decoration: none;
+        padding: 16px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 18px;
+        z-index: 1000;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .mobile-call-sticky:hover {
+        background: linear-gradient(135deg, var(--primary-dark) 0%, #1e40af 100%);
+    }
+}
+
+/* ===============================
+   Phone Input – Flag Outside
+   =============================== */
+
+.phone-wrapper {
+    position: relative;
+}
+
+/* PhoneInput container */
+.phone-input-custom {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--white);
+    transition: border-color 0.25s ease;
+}
+
+.phone-input-custom:hover,
+.phone-input-custom:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Flag selector */
+.phone-input-custom .PhoneInputCountry {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-right: 1px solid var(--border-color);
+}
+
+/* Country dropdown */
+.phone-input-custom .PhoneInputCountrySelect {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Phone number input */
+.phone-input-custom .PhoneInputInput {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 18px 14px;
+    font-size: 16px;
+    background: transparent;
+    color: #000;
+}
+
+/* Hide placeholder */
+.phone-input-custom .PhoneInputInput::placeholder {
+    color: transparent;
+}
+
+/* Floating label positioning */
+.phone-floating label {
+    left: 140px;
+}
+
+/* Floating label active */
+.phone-floating.has-value label,
+.phone-input-custom:focus-within + label,
+.phone-input-custom:hover + label {
+    top: -4px;
+    font-size: 12.5px;
+    color: var(--primary-color);
+}
+
+/* ===============================
+   Products Horizontal Slider
+   =============================== */
+
+.products-slider {
+    display: flex;
+    gap: 2.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 1rem;
+    flex-wrap: nowrap;
+}
+
+.products-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-card {
+    min-width: 340px;
+    max-width: 340px;
+    flex-shrink: 0;
+}
+
+.products-slider-header {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.slider-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--primary-dark)
+    );
+    color: white;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    transition: all 0.3s ease;
+}
+
+.slider-btn:hover {
+    transform: scale(1.1);
+}
+/* ==================================================
+   PRODUCTS – FINAL HORIZONTAL SLIDER (NO CONFLICTS)
+   ================================================== */
+
+.products-slider {
+    display: flex;
+    gap: 2.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 1rem;
+    flex-wrap: nowrap;
+}
+
+.products-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-card {
+    min-width: 340px;
+    max-width: 340px;
+    flex-shrink: 0;
+}
+
+/* Slider arrows */
+.products-slider-header {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.slider-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--primary-dark)
+    );
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    transition: all 0.3s ease;
+}
+
+.slider-btn:hover {
+    transform: scale(1.1);
+}
+
+/* ==================================================
+   PRODUCT IMAGE – FINAL FIX (NO CUT, SAME SIZE)
+   ================================================== */
+
+.product-image {
+    height: 240px;                 /* fixed visual height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    padding: 16px;
+    overflow: visible;             /* KEY: prevents cutting */
+}
+
+.product-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;           /* NEVER crops */
+    transition: transform 0.4s ease;
+}
+
+.product-img:hover {
+    transform: scale(1.04);        /* safe hover zoom */
+}
+
+/* Mobile adjustment */
+@media (max-width: 768px) {
+    .slider-card {
+        min-width: 280px;
+        max-width: 280px;
+    }
+
+    .product-image {
+        height: 210px;
+    }
+}
+
+
+/* ==================================================
+   PRODUCT IMAGE – FULLY VISIBLE (ZOOMED OUT)
+   ================================================== */
+
+.product-image {
+    height: 240px;                 /* consistent height */
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;      /* KEY: zoomed out */
+    background-color: #ffffff;
+    padding: 12px;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.03);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .product-image {
+        height: 210px;
+    }
 }

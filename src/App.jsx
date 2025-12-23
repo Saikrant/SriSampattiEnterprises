@@ -30,6 +30,15 @@ function App() {
         <Contact />
         <Chatbot />
       </main>
+      {/* Mobile Call Buttons */}
+      <div className="mobile-call-buttons">
+        <a href="tel:+919515104922" className="mobile-call-floating">
+          📞
+        </a>
+        <a href="tel:+919515104922" className="mobile-call-sticky">
+          Call Now
+        </a>
+      </div>
       <Footer />
     </>
   );
