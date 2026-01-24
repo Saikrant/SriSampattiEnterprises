@@ -20,7 +20,7 @@ const ProductDetails = () => {
         <div className="product-hero-text">
           <h1>{product.title}</h1>
           <p>{product.description}</p>
-          <button className="btn btn-primary">Enquire Now</button>
+          <Link to="/#contact" className="btn btn-primary">Enquire Now</Link>
         </div>
 
         <div className="product-hero-image">

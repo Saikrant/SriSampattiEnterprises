@@ -1,6 +1,19 @@
 import React from 'react';
 
 const CompanyHistory = () => {
+    const scrollRef = React.useRef(null);
+
+    const scroll = (direction) => {
+        const { current } = scrollRef;
+        if (current) {
+            const scrollAmount = 300; // adjustable scroll amount
+            current.scrollBy({
+                left: direction === 'left' ? -scrollAmount : scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    };
+
     return (
         <section id="company-history" className="company-history">
             <div className="container">
@@ -73,25 +86,35 @@ const CompanyHistory = () => {
 
                     <div className="certifications">
                         <h3>Our Certifications</h3>
-                        <div className="cert-list">
-                            <div className="cert-badge">
-                                <span className="cert-name">RoHS Compliant</span>
-                                <span className="cert-desc">
-                                    Ensures products are free from restricted hazardous substances for enhanced safety.
-                                </span>
+                        <div className="cert-slider-container">
+                            <button className="slider-btn left" onClick={() => scroll('left')}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+
+                            <div className="cert-list" ref={scrollRef}>
+                                <div className="cert-badge">
+                                    <span className="cert-name">RoHS Compliant</span>
+                                    <span className="cert-desc">
+                                        Ensures products are free from restricted hazardous substances for enhanced safety.
+                                    </span>
+                                </div>
+                                <div className="cert-badge">
+                                    <span className="cert-name">CIPET Tested</span>
+                                    <span className="cert-desc">
+                                        Tested for physical and chemical properties to meet industry quality benchmarks.
+                                    </span>
+                                </div>
+                                <div className="cert-badge">
+                                    <span className="cert-name">Lead-Free</span>
+                                    <span className="cert-desc">
+                                        Manufactured without lead, making products safe for users and the environment.
+                                    </span>
+                                </div>
                             </div>
-                            <div className="cert-badge">
-                                <span className="cert-name">CIPET Tested</span>
-                                <span className="cert-desc">
-                                    Tested for physical and chemical properties to meet industry quality benchmarks.
-                                </span>
-                            </div>
-                            <div className="cert-badge">
-                                <span className="cert-name">Lead-Free</span>
-                                <span className="cert-desc">
-                                    Manufactured without lead, making products safe for users and the environment.
-                                </span>
-                            </div>
+
+                            <button className="slider-btn right" onClick={() => scroll('right')}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
                         </div>
                     </div>
 

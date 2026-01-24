@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 import ProductDetails from "./pages/ProductDetails";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -13,11 +14,10 @@ import Contact from "./components/Contact";
 import Chatbot from "./components/Chatbot";
 import Footer from "./components/Footer";
 
-/* keep all your existing imports */
-
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
 
       <Routes>
