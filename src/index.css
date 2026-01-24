@@ -3291,11 +3291,12 @@ ul {
 /* Mobile */
 @media (max-width: 768px) {
     .phone-row {
-        flex-direction: column;
+        gap: 0.5rem;
     }
 
     .phone-country {
-        width: 100%;
+        width: 100px;
+        /* Sufficient for flag + code */
     }
 }
 
@@ -3423,16 +3424,7 @@ ul {
     padding-right: 2rem;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-    .phone-row {
-        flex-direction: column;
-    }
-
-    .country-code-box {
-        width: 100%;
-    }
-}
+/* Consolidated above */
 
 /* ===============================
    WHATSAPP FLOATING (NO OVERLAP)
