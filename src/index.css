@@ -28,7 +28,11 @@
 }
 
 
-
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
 
 
@@ -94,10 +98,14 @@ ul {
 
 /* Utilities */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
+
+
 
 .btn {
     display: inline-block;
@@ -2258,10 +2266,10 @@ ul {
     }
 
     .slider-card {
-        min-width: 85vw;
-        max-width: 85vw;
-        flex-shrink: 0;
-    }
+    min-width: calc(100vw - 2rem);
+    max-width: calc(100vw - 2rem);
+}
+
 }
 
 .nav-list a.active {
@@ -3017,3 +3025,228 @@ ul {
   width: 28px;
   height: 28px;
 }
+
+.config-image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.config-image-wrapper img {
+  max-width: 720px;      /* 🔥 prevents huge images */
+  width: 100%;
+  border-radius: 12px;
+  cursor: zoom-in;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.config-image-wrapper img:hover {
+  transform: scale(1.01);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.series-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.series-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.1);
+}
+
+.series-card h4 {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: #c04a2b; /* matches your Enquire Now button */
+}
+
+.series-card img {
+  width: 100%;
+  max-height: 160px;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.highlight-box {
+  background: #fafafa;
+  border: 1px solid #eee;
+  padding: 0.8rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: center;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.highlight-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.details-section {
+  margin-top: 3.5rem;
+}
+
+.details-section h3 {
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+/* ================= MATCH GET QUOTE FONT TO ENQUIRE NOW ================= */
+
+.hero .btn-primary {
+    font-family: inherit;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===============================
+   TESTIMONIAL CARDS – INTERACTIVE
+   =============================== */
+
+.testimonial-card {
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 22px 40px -12px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ===============================
+   TESTIMONIAL MODAL
+   =============================== */
+
+.testimonial-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1.5rem;
+}
+
+.testimonial-modal-content {
+  background: #fff;
+  max-width: 540px;
+  width: 100%;
+  padding: 2.75rem 2.5rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  animation: scaleIn 0.3s ease;
+}
+
+/* Review text */
+.testimonial-modal-content p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 2rem; /* 🔥 SPACE after review */
+  color: #475569;
+}
+
+/* Name */
+.testimonial-modal-content h4 {
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+/* Role */
+.testimonial-modal-content span {
+  display: block;
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 1.8rem; /* 🔥 SPACE before button */
+}
+
+/* Close button spacing */
+.testimonial-modal-content .btn {
+  padding: 0.75rem 2.2rem;
+  font-size: 0.95rem;
+}
+
+.testimonial-modal-content .stars {
+  margin-bottom: 1.2rem;
+}
+
+
+.testimonial-modal-content p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-modal-content h4 {
+  margin-bottom: 0.25rem;
+  color: var(--secondary-color);
+}
+
+.testimonial-modal-content span {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===============================
+   MOBILE FRIENDLY
+   =============================== */
+
+@media (max-width: 768px) {
+  .testimonial-modal-content {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.contact-form-wrapper .form-group {
+  margin-bottom: 0.9rem;
+}
+
+

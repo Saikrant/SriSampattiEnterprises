@@ -26,8 +26,8 @@ function App() {
           element={
             <main>
               <Hero />
-              <Features />
               <Products />
+              <Features />
               <ColorProfiles />
               <WhyUs />
               <CompanyHistory />

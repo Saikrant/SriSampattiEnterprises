@@ -28,31 +28,43 @@ const Contact = () => {
     setTimeout(() => setToast(""), 1600);
   };
 
+  /* 🔹 VALIDATION */
   const validate = () => {
     let tempErrors = {};
-    if (!formData.name.trim()) tempErrors.name = "Name is required";
-    if (!formData.phone.trim()) tempErrors.phone = "Phone is required";
-    if (!formData.location.trim()) tempErrors.location = "Location is required";
-    if (!formData.requirement.trim())
+
+    if (!formData.name.trim()) {
+      tempErrors.name = "Name is required";
+    } else if (!/^[A-Za-z\s]+$/.test(formData.name)) {
+      tempErrors.name = "Name should contain only alphabets";
+    }
+
+    if (!formData.phone.trim()) {
+      tempErrors.phone = "Phone number is required";
+    } else if (!/^[0-9]{10}$/.test(formData.phone)) {
+      tempErrors.phone = "Phone number must be exactly 10 digits";
+    }
+
+    if (!formData.location.trim()) {
+      tempErrors.location = "Location is required";
+    }
+
+    if (!formData.requirement.trim()) {
       tempErrors.requirement = "Requirement is required";
+    }
 
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
-    setErrors({ ...errors, [id]: "" });
-  };
-
+  /* 🔹 SUBMIT */
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate() || isSubmitting) return;
 
     setIsSubmitting(true);
+
     setTimeout(() => {
-      alert("Thank you! We will contact you shortly.");
+      setToast("Thank you! Our team will contact you shortly.");
       setFormData({
         name: "",
         phone: "",
@@ -66,10 +78,10 @@ const Contact = () => {
 
   return (
     <>
-      {/* 🔹 COPY TOAST */}
+      {/* 🔹 TOAST */}
       {toast && <div className="copy-toast">{toast}</div>}
 
-      {/* 🔹 MOBILE WHATSAPP BUTTON */}
+      {/* 🔹 MOBILE WHATSAPP */}
       {isMobile && (
         <div className="mobile-call-buttons">
           <a
@@ -87,13 +99,14 @@ const Contact = () => {
         </div>
       )}
 
-      {/* CONTACT SECTION */}
+      {/* CONTACT */}
       <section id="contact" className="contact">
         <div className="container contact-container">
+
           {/* INFO */}
           <div className="contact-info">
             <h2>Get In Touch</h2>
-            <p>Have questions? We're here to help.</p>
+            <p>Have questions? We’re here to help.</p>
 
             <div className="contact-item">
               <div className="contact-text">
@@ -101,20 +114,14 @@ const Contact = () => {
 
                 <div className="copy-row">
                   <span>+91 95151 04922</span>
-                  <button
-                    className="copy-btn"
-                    onClick={() => copyText("+919515104922")}
-                  >
+                  <button className="copy-btn" onClick={() => copyText("+919515104922")}>
                     Copy
                   </button>
                 </div>
 
                 <div className="copy-row">
                   <span>+91 94833 33456</span>
-                  <button
-                    className="copy-btn"
-                    onClick={() => copyText("+919483333456")}
-                  >
+                  <button className="copy-btn" onClick={() => copyText("+919483333456")}>
                     Copy
                   </button>
                 </div>
@@ -124,13 +131,9 @@ const Contact = () => {
             <div className="contact-item">
               <div className="contact-text">
                 <h4>Email</h4>
-
                 <div className="copy-row">
                   <span>info@srisampatti.com</span>
-                  <button
-                    className="copy-btn"
-                    onClick={() => copyText("info@srisampatti.com")}
-                  >
+                  <button className="copy-btn" onClick={() => copyText("info@srisampatti.com")}>
                     Copy
                   </button>
                 </div>
@@ -150,21 +153,32 @@ const Contact = () => {
 
           {/* FORM */}
           <div className="contact-form-wrapper">
+            <h3>Request a Free Quote</h3>
+            <p style={{ fontSize: "0.95rem", color: "#64748b", marginBottom: "1.4rem" }}>
+              Share your requirement and our experts will guide you.
+            </p>
+
             <form onSubmit={handleSubmit}>
+
+              {/* NAME */}
               <div className="form-group">
                 <div className="form-floating">
                   <input
                     type="text"
-                    id="name"
                     placeholder="Full Name"
                     value={formData.name}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/[^A-Za-z\s]/g, "");
+                      setFormData({ ...formData, name: value });
+                      setErrors({ ...errors, name: "" });
+                    }}
                   />
                   <label>Full Name</label>
                 </div>
                 {errors.name && <span className="error">{errors.name}</span>}
               </div>
 
+              {/* PHONE */}
               <div className="form-group">
                 <div className="phone-row">
                   <div className="form-floating phone-country">
@@ -175,10 +189,15 @@ const Contact = () => {
                   <div className="form-floating phone-input">
                     <input
                       type="tel"
-                      id="phone"
                       placeholder="Phone Number"
                       value={formData.phone}
-                      onChange={handleChange}
+                      onChange={(e) => {
+                        const value = e.target.value.replace(/\D/g, "");
+                        if (value.length <= 10) {
+                          setFormData({ ...formData, phone: value });
+                          setErrors({ ...errors, phone: "" });
+                        }
+                      }}
                     />
                     <label>Phone Number</label>
                   </div>
@@ -186,30 +205,34 @@ const Contact = () => {
                 {errors.phone && <span className="error">{errors.phone}</span>}
               </div>
 
+              {/* LOCATION */}
               <div className="form-group">
                 <div className="form-floating">
                   <input
                     type="text"
-                    id="location"
                     placeholder="Location"
                     value={formData.location}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      setFormData({ ...formData, location: e.target.value });
+                      setErrors({ ...errors, location: "" });
+                    }}
                   />
                   <label>Location</label>
                 </div>
-                {errors.location && (
-                  <span className="error">{errors.location}</span>
-                )}
+                {errors.location && <span className="error">{errors.location}</span>}
               </div>
 
+              {/* REQUIREMENT */}
               <div className="form-group">
                 <div className="form-floating">
                   <textarea
-                    id="requirement"
                     rows="4"
                     placeholder="Your Requirement"
                     value={formData.requirement}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      setFormData({ ...formData, requirement: e.target.value });
+                      setErrors({ ...errors, requirement: "" });
+                    }}
                   />
                   <label>Your Requirement</label>
                 </div>
@@ -218,13 +241,27 @@ const Contact = () => {
                 )}
               </div>
 
+              {/* TRUST LINE */}
+              <p
+                style={{
+                  fontSize: "0.9rem",
+                  color: "#64748b",
+                  textAlign: "center",
+                  marginBottom: "1rem",
+                }}
+              >
+                ✔ Free consultation • ✔ No spam • ✔ Response within 24 hours
+              </p>
+
+              {/* SUBMIT */}
               <button
                 type="submit"
                 className="btn btn-primary btn-full"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? "Sending..." : "Request Free Quote"}
               </button>
+
             </form>
           </div>
         </div>
