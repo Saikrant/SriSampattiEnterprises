@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const N8N_WEBHOOK_URL = "http://localhost:5678/webhook/webhook/sri-sampatti-chatbot";
-// example (local):
-// http://localhost:5678/webhook/sri-sampatti-chatbot
+const N8N_WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL || "https://localhost:5678/webhook/webhook/sri-sampatti-chatbot";
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
