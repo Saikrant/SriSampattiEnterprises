@@ -42,6 +42,7 @@ const Navbar = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const isHome = location.pathname === '/';
+    const [toast, setToast] = useState(false);
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 80);
@@ -129,9 +130,20 @@ const Navbar = () => {
                                     transition={{ duration: 0.2 }}
                                 >
                                     {item.dropdown.map((sub) => (
-                                        <Link key={sub.to} to={sub.to} className="navbar__dropdown-item" onClick={() => setHoveredDropdown(null)}>
-                                            {sub.label}
-                                        </Link>
+                                        sub.to === '/careers' ? (
+                                            <a key={sub.label} href="#" className="navbar__dropdown-item" onClick={(e) => {
+                                                e.preventDefault();
+                                                setToast(true);
+                                                setTimeout(() => setToast(false), 3000);
+                                                setHoveredDropdown(null);
+                                            }}>
+                                                {sub.label}
+                                            </a>
+                                        ) : (
+                                            <Link key={sub.to} to={sub.to} className="navbar__dropdown-item" onClick={() => setHoveredDropdown(null)}>
+                                                {sub.label}
+                                            </Link>
+                                        )
                                     ))}
                                 </motion.div>
                             )}
@@ -187,7 +199,15 @@ const Navbar = () => {
                             <motion.li className="navbar__mobile-label" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>Company</motion.li>
                             {[{ label: 'About Us', to: '/about' }, { label: 'Projects', to: '/projects' }, { label: 'Service Areas', to: '/service-areas' }, { label: 'Careers', to: '/careers' }].map(item => (
                                 <motion.li key={item.to} variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}>
-                                    <Link to={item.to} onClick={() => setMenuOpen(false)}>{item.label}</Link>
+                                    {item.to === '/careers' ? (
+                                        <a href="#" onClick={(e) => {
+                                            e.preventDefault();
+                                            setToast(true);
+                                            setTimeout(() => setToast(false), 3000);
+                                        }}>{item.label}</a>
+                                    ) : (
+                                        <Link to={item.to} onClick={() => setMenuOpen(false)}>{item.label}</Link>
+                                    )}
                                 </motion.li>
                             ))}
 
@@ -202,6 +222,24 @@ const Navbar = () => {
                         <button className="btn-primary navbar__mobile-cta" onClick={() => handleNav('contact')}>
                             Get Quote
                         </button>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+            {/* Coming Soon Toast */}
+            <AnimatePresence>
+                {toast && (
+                    <motion.div
+                        className="navbar__toast glass-card"
+                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                    >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                        <span>Careers page is coming soon!</span>
                     </motion.div>
                 )}
             </AnimatePresence>
