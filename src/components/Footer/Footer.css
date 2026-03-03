@@ -118,7 +118,7 @@
 
 @media (max-width: 768px) {
     .footer {
-        padding: 48px 0 24px;
+        padding: 48px 0 80px;
     }
 
     .footer__grid {
