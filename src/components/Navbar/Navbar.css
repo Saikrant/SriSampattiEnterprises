@@ -1,0 +1,231 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 0 80px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.navbar--scrolled {
+    background: rgba(17, 19, 24, 0.90);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* Logo */
+.navbar__logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar__brand {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar__brand-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+}
+
+.navbar__brand-sub {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+}
+
+/* Links */
+.navbar__links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    align-items: center;
+}
+
+/* Dropdown */
+.navbar__dropdown-wrap {
+    position: relative;
+}
+
+.navbar__chevron {
+    margin-left: 3px;
+    vertical-align: middle;
+}
+
+.navbar__dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: -12px;
+    min-width: 200px;
+    background: rgba(30, 35, 48, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 8px;
+    z-index: 1001;
+}
+
+.navbar__dropdown-item {
+    display: block;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: var(--text-secondary);
+    transition: all 0.15s;
+}
+
+.navbar__dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+/* Actions wrapper */
+.navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar__link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.navbar__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.navbar__link:hover {
+    color: var(--text-primary);
+}
+
+.navbar__link--active {
+    color: var(--accent);
+}
+
+.navbar__link--active::after {
+    width: 100%;
+}
+
+.navbar__cta {
+    font-size: 13px;
+    padding: 10px 22px;
+}
+
+.navbar__mobile-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-family: 'Space Mono', monospace;
+    margin-top: 16px;
+    list-style: none;
+}
+
+/* Hamburger */
+.navbar__burger {
+    display: none;
+    background: none;
+    border: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.navbar__burger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 1px;
+    transition: var(--transition-fast);
+}
+
+.navbar__burger--open span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+}
+
+.navbar__burger--open span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar__burger--open span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* Mobile menu */
+.navbar__mobile {
+    position: fixed;
+    inset: 72px 0 0 0;
+    background: #111318;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 24px 120px;
+    gap: 24px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.navbar__mobile ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.navbar__mobile a {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.navbar__mobile-cta {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 24px;
+    }
+
+    .navbar__links,
+    .navbar__actions {
+        display: none;
+    }
+
+    .navbar__burger {
+        display: flex;
+    }
+}

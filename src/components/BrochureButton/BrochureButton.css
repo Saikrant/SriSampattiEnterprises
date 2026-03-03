@@ -1,0 +1,44 @@
+.brochure-wrap {
+    position: relative;
+}
+
+.brochure-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-full);
+    padding: 7px 16px;
+    background: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+}
+
+.brochure-btn:hover {
+    color: var(--text-primary);
+}
+
+.brochure-toast {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background: rgba(30, 35, 48, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: var(--text-primary);
+    z-index: 100;
+}
+
+@media (max-width: 768px) {
+    .brochure-wrap {
+        display: none;
+    }
+}

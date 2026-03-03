@@ -1,0 +1,164 @@
+.sa-hero {
+    padding: 140px 0 60px;
+    background: var(--bg-primary);
+}
+
+.sa-hero h1 {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 16px 0 12px;
+}
+
+.sa-hero .accent {
+    color: var(--accent);
+}
+
+.sa-hero__sub {
+    font-size: 17px;
+    color: var(--text-secondary);
+}
+
+.sa-map {
+    padding: 80px 0;
+    background: var(--bg-secondary);
+}
+
+.sa-map__card {
+    text-align: center;
+    padding: 64px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 48px;
+}
+
+.sa-map__card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.sa-map__card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+}
+
+.sa-states {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.sa-state {
+    padding: 32px;
+}
+
+.sa-state__name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.sa-state__divider {
+    height: 1px;
+    background: var(--glass-border);
+    margin: 16px 0;
+}
+
+.sa-state__cities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+    margin-bottom: 20px;
+}
+
+.sa-city {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.sa-state__badge {
+    display: inline-block;
+    font-size: 12px;
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+}
+
+.sa-promises {
+    padding: 80px 0;
+    background: var(--bg-primary);
+}
+
+.sa-promises__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.sa-promise {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sa-promise h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.sa-promise p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.sa-cta {
+    padding: 64px 0;
+    background: var(--accent);
+}
+
+.sa-cta h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.sa-cta p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 24px;
+}
+
+.sa-cta__btn {
+    background: white;
+    color: var(--accent);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 14px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .sa-hero {
+        padding: 100px 0 40px;
+    }
+
+    .sa-states,
+    .sa-promises__grid {
+        grid-template-columns: 1fr;
+    }
+}

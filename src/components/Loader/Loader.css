@@ -1,0 +1,42 @@
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #0d0f14;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+
+.loader__icon {
+    width: 120px;
+    height: 120px;
+}
+
+.loader__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.loader__name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.loader__sub {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--text-secondary);
+}
+
+.loader__line {
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+}

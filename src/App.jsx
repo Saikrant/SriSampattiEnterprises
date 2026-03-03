@@ -1,48 +1,49 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ScrollToTop from "./components/ScrollToTop";
-import ProductDetails from "./pages/ProductDetails";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Features from "./components/Features";
-import Products from "./components/Products";
-import ColorProfiles from "./components/ColorProfiles";
-import WhyUs from "./components/WhyUs";
-import CompanyHistory from "./components/CompanyHistory";
-import Process from "./components/Process";
-import Testimonials from "./components/Testimonials";
-import Contact from "./components/Contact";
-import Chatbot from "./components/Chatbot";
-import Footer from "./components/Footer";
+import { useState, useCallback } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import Loader from './components/Loader/Loader';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton';
+import BottomTabBar from './components/BottomTabBar/BottomTabBar';
+import Home from './pages/Home';
+import ProductDetail from './pages/ProductDetail';
+import AboutPage from './pages/AboutPage';
+import ProjectsPage from './pages/ProjectsPage';
+import GalleryPage from './pages/GalleryPage';
+import BlogListPage from './pages/BlogListPage';
+import BlogPostPage from './pages/BlogPostPage';
+import ServiceAreasPage from './pages/ServiceAreasPage';
+import CareersPage from './pages/CareersPage';
+import PartnerPage from './pages/PartnerPage';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const handleComplete = useCallback(() => setLoading(false), []);
+
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      <Header />
-
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <main>
-              <Hero />
-              <Products />
-              <Features />
-              <ColorProfiles />
-              <WhyUs />
-              <CompanyHistory />
-              <Process />
-              <Testimonials />
-              <Contact />
-              <Chatbot />
-            </main>
-          }
-        />
-
-        <Route path="/products/:slug" element={<ProductDetails />} />
-      </Routes>
-
-      <Footer />
+      <AnimatePresence>
+        {loading && <Loader key="loader" onComplete={handleComplete} />}
+      </AnimatePresence>
+      {!loading && (
+        <>
+          <ScrollToTop />
+          <WhatsAppButton />
+          <BottomTabBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products/:slug" element={<ProductDetail />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/blog" element={<BlogListPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/service-areas" element={<ServiceAreasPage />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/partner-with-us" element={<PartnerPage />} />
+          </Routes>
+        </>
+      )}
     </BrowserRouter>
   );
 }

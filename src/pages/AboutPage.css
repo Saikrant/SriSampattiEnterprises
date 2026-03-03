@@ -1,0 +1,243 @@
+.about-hero {
+    padding: 140px 0 80px;
+    background: var(--bg-primary);
+}
+
+.about-hero h1 {
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 16px 0 20px;
+    line-height: 1.15;
+}
+
+.about-hero .accent {
+    color: var(--accent);
+}
+
+.about-hero__sub {
+    font-size: 17px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+.about-story {
+    padding: 80px 0;
+    background: var(--bg-primary);
+}
+
+.about-story__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.about-story__text h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+}
+
+.about-story__text p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.about-timeline {
+    margin-top: 32px;
+    border-left: 2px solid var(--accent);
+    padding-left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.about-timeline__item {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+}
+
+.about-timeline__year {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 48px;
+}
+
+.about-timeline__event {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.about-mv {
+    padding: 80px 0;
+    background: var(--bg-secondary);
+}
+
+.about-mv__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+}
+
+.about-mv__card {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.about-mv__card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.about-mv__card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.about-founder {
+    padding: 80px 0;
+    background: var(--bg-primary);
+}
+
+.about-founder__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.about-founder__circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: 800;
+    color: white;
+    margin: 0 auto 16px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.about-founder__role {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 4px;
+}
+
+.about-founder__company {
+    display: block;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.about-founder__note {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.about-founder__msg h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 16px 0 8px;
+}
+
+.about-founder__quote {
+    display: block;
+    margin-bottom: -16px;
+}
+
+.about-founder__msg blockquote {
+    font-size: 17px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-style: italic;
+    border-left: 3px solid var(--accent);
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+.about-founder__sig {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.about-certs {
+    padding: 80px 0;
+    background: var(--bg-secondary);
+}
+
+.about-certs__row {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.about-certs__card {
+    padding: 24px 32px;
+    text-align: center;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.about-certs__title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.about-certs__sub {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.about-certs__note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 100px 0 48px;
+    }
+
+    .about-story__grid,
+    .about-mv__grid,
+    .about-founder__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .about-founder__grid> :first-child {
+        order: -1;
+    }
+}
