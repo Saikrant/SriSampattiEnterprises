@@ -77,8 +77,8 @@ const Features = () => {
                     transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
                     <span className="pill-label">Why Choose Us</span>
-                    <h2>Built Different. Built to Last.</h2>
-                    <p>Why Sudhakar Profiles are the best choice for your home</p>
+                    <h2>Best uPVC Windows in Hyderabad</h2>
+                    <p>High-quality uPVC windows and doors manufactured with Sudhakar Profiles</p>
                 </motion.div>
 
                 <div className="features__grid">

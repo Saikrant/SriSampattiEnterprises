@@ -6,6 +6,8 @@ import Footer from '../components/Footer/Footer';
 import BlogCard from '../components/Blog/BlogCard';
 import PlaceholderImage from '../components/PlaceholderImage/PlaceholderImage';
 import { BLOG_POSTS } from '../data/blogPosts';
+import SEO from '../components/SEO/SEO';
+import { getArticleSchema, getBreadcrumbSchema } from '../data/schemas';
 import './BlogPostPage.css';
 
 const scrollToSection = (id) => { const el = document.getElementById(id); if (!el) return; window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); };
@@ -24,8 +26,25 @@ const BlogPostPage = () => {
 
     const related = BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 3);
 
+    const getBlogSEO = (post) => ({
+        title: post.title,
+        description: post.excerpt,
+        keywords: `${post.category} uPVC windows, ${post.title.toLowerCase()}, uPVC guide Hyderabad, Sri Sampatti blog`,
+        canonicalUrl: `/blog/${post.slug}`,
+        ogType: 'article',
+        schema: [
+            getArticleSchema(post),
+            getBreadcrumbSchema([
+                { name: "Home", url: "/" },
+                { name: "Blog", url: "/blog" },
+                { name: post.title, url: `/blog/${post.slug}` }
+            ])
+        ]
+    });
+
     return (
         <>
+            <SEO {...getBlogSEO(post)} />
             <Navbar />
             <article className="bp-article">
                 <div className="bp-container">

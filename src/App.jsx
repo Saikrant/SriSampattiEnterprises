@@ -1,50 +1,61 @@
-import { useState, useCallback } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState, useCallback, Suspense, useEffect } from 'react';
+import { useLocation, Outlet } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { HelmetProvider } from 'react-helmet-async';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import Loader from './components/Loader/Loader';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton';
 import BottomTabBar from './components/BottomTabBar/BottomTabBar';
-import Home from './pages/Home';
-import ProductDetail from './pages/ProductDetail';
-import AboutPage from './pages/AboutPage';
-import ProjectsPage from './pages/ProjectsPage';
-import GalleryPage from './pages/GalleryPage';
-import BlogListPage from './pages/BlogListPage';
-import BlogPostPage from './pages/BlogPostPage';
-import ServiceAreasPage from './pages/ServiceAreasPage';
-import CareersPage from './pages/CareersPage';
-import PartnerPage from './pages/PartnerPage';
+import { trackPageView } from './utils/analytics';
+
+const RouteTracker = () => {
+  const location = useLocation();
+  useEffect(() => {
+    trackPageView(location.pathname, document.title);
+  }, [location]);
+  return null;
+}
 
 function App() {
   const [loading, setLoading] = useState(true);
   const handleComplete = useCallback(() => setLoading(false), []);
 
   return (
-    <BrowserRouter>
-      <AnimatePresence>
-        {loading && <Loader key="loader" onComplete={handleComplete} />}
-      </AnimatePresence>
-      {!loading && (
-        <>
-          <ScrollToTop />
-          <WhatsAppButton />
-          <BottomTabBar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products/:slug" element={<ProductDetail />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/blog" element={<BlogListPage />} />
-            <Route path="/blog/:slug" element={<BlogPostPage />} />
-            <Route path="/service-areas" element={<ServiceAreasPage />} />
-            <Route path="/careers" element={<CareersPage />} />
-            <Route path="/partner-with-us" element={<PartnerPage />} />
-          </Routes>
-        </>
-      )}
-    </BrowserRouter>
+    <ErrorBoundary>
+      <HelmetProvider>
+        <AnimatePresence>
+          {loading && <Loader key="loader" onComplete={handleComplete} />}
+        </AnimatePresence>
+        {!loading && (
+          <>
+            <ScrollToTop />
+            <RouteTracker />
+            <WhatsAppButton />
+            <BottomTabBar />
+            <Suspense fallback={
+              <div style={{
+                height: '100vh',
+                background: '#111318',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <div style={{
+                  width: 40, height: 40,
+                  border: '3px solid rgba(200,75,26,0.2)',
+                  borderTop: '3px solid #c84b1a',
+                  borderRadius: '50%',
+                  animation: 'spin 0.8s linear infinite'
+                }} />
+              </div>
+            }>
+              <Outlet />
+            </Suspense>
+          </>
+        )}
+      </HelmetProvider>
+    </ErrorBoundary>
   );
 }
 

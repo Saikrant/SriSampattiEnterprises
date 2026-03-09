@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
 import PlaceholderImage from '../components/PlaceholderImage/PlaceholderImage';
 import { PROJECTS } from '../data/projects';
+import SEO from '../components/SEO/SEO';
 import './ProjectsPage.css';
 
 const TYPES = ['All', 'Residential', 'Villa', 'Apartment', 'Commercial'];
@@ -18,6 +19,12 @@ const ProjectsPage = () => {
 
     return (
         <>
+            <SEO
+                title="Our Projects — 500+ uPVC Installations | Sri Sampatti Enterprises"
+                description="View 500+ completed uPVC window and door installations across Hyderabad, Telangana, Andhra Pradesh and Karnataka. Residential villas, apartments, and commercial buildings."
+                keywords="uPVC window installation Hyderabad, uPVC projects Telangana, uPVC windows installed villas apartments Hyderabad"
+                canonicalUrl="/projects"
+            />
             <Navbar />
             <section className="proj-hero">
                 <div className="container">

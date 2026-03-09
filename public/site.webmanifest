@@ -1,0 +1,21 @@
+{
+    "name": "Sri Sampatti Enterprises",
+    "short_name": "Sri Sampatti",
+    "description": "Premium uPVC Windows & Doors Hyderabad",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#111318",
+    "theme_color": "#c84b1a",
+    "icons": [
+        {
+            "src": "/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

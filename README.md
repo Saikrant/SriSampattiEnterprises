@@ -1,16 +1,75 @@
-# React + Vite
+# Sri Sampatti Enterprises Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Premium uPVC Windows & Doors manufacturer website.
+Built with React 19 + Vite + Framer Motion.
+Deployed on Cloudflare Pages.
 
-Currently, two official plugins are available:
+## Development
+npm install
+npm run dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Build
+npm run build
 
-## React Compiler
+## Deploy
+Automatic via Cloudflare Pages on push to main branch.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## POST-LAUNCH SEO CHECKLIST
 
-## Expanding the ESLint configuration
+### Domain (Client Action)
+- [ ] Purchase domain (recommend: srisampatti.com or srisampatti.in)
+- [ ] Connect domain to Cloudflare (add site to Cloudflare DNS)
+- [ ] Enable Cloudflare proxy (orange cloud) for CDN + DDoS protection
+- [ ] Force HTTPS redirect in Cloudflare SSL/TLS settings
+- [ ] Set SSL/TLS mode to "Full (strict)"
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Google Search Console
+- [ ] Go to search.google.com/search-console
+- [ ] Add property → Domain type → enter domain
+- [ ] Verify via DNS TXT record in Cloudflare DNS
+- [ ] Submit sitemap: https://www.srisampatti.com/sitemap.xml
+- [ ] Request indexing for homepage manually
+- [ ] Check Coverage report after 48 hours
+
+### Google Analytics 4
+- [ ] Create account at analytics.google.com
+- [ ] Create GA4 property → get Measurement ID (G-XXXXXXXXXX)
+- [ ] Add Measurement ID to VITE_GA_MEASUREMENT_ID env variable
+- [ ] Verify real-time data is recording after deployment
+- [ ] Set up conversion goal: "Quote Form Submitted"
+
+### Google Business Profile (Critical for Local SEO)
+- [ ] Go to business.google.com → Create/claim listing
+- [ ] Business name: "Sri Sampatti Enterprises"
+- [ ] Category: "Window supplier" + "Door supplier"
+- [ ] Address: Rajendranagar, Hyderabad address
+- [ ] Phone: +91 95151 04922
+- [ ] Website: https://www.srisampatti.com
+- [ ] Add all product photos (uPVC windows, installations)
+- [ ] Add business hours
+- [ ] Add service areas: Hyderabad, Telangana, AP, Karnataka
+- [ ] Verify via postcard or phone call (Google requirement)
+
+### Microsoft Clarity
+- [ ] Create account at clarity.microsoft.com
+- [ ] Get Project ID
+- [ ] Add to VITE_CLARITY_PROJECT_ID env variable
+- [ ] Verify recordings after 24 hours
+
+### Local Directory Listings (important for local SEO)
+- [ ] Justdial: justdial.com → List business
+- [ ] Sulekha: sulekha.com → List business
+- [ ] IndiaMart: indiamart.com → List company
+- [ ] TradeIndia: tradeindia.com → List
+- [ ] Yellow Pages India: yellowpages.co.in
+- [ ] All listings: same NAP (Name, Address, Phone) everywhere
+
+### OG Image
+- [ ] Create og-image.jpg (1200×630px)
+- [ ] Place in /public/og-image.jpg
+- [ ] Test: developers.facebook.com/tools/debug/
+
+### Favicon & Icons
+- [ ] Export logo as PNG: 16px, 32px, 192px, 512px versions
+- [ ] Place in public/icons/ folder
+- [ ] Test favicon appears in browser tab after deploy

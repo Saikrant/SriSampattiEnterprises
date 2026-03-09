@@ -4,6 +4,9 @@ import { motion } from 'framer-motion';
 import { PRODUCTS } from '../data/products';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
+import SEO from '../components/SEO/SEO';
+import OptimizedImage from '../components/OptimizedImage/OptimizedImage';
+import { getProductSchema, getBreadcrumbSchema } from '../data/schemas';
 import './ProductDetail.css';
 
 const ProductDetail = () => {
@@ -24,12 +27,28 @@ const ProductDetail = () => {
         navigate('/', { state: { scrollTo: 'contact' } });
     };
 
+    const seoData = {
+        title: `${product.name} in Hyderabad | Sri Sampatti Enterprises`,
+        description: `Buy premium ${product.name} in Hyderabad from Sri Sampatti Enterprises. ${product.shortDesc} Powered by Sudhakar Profiles. German technology. Free site visit — Call +91 95151 04922.`,
+        keywords: `${product.name} Hyderabad, ${product.name} price Hyderabad, ${product.name.toLowerCase()} Telangana, buy ${product.name.toLowerCase()} Hyderabad, Sudhakar ${product.name.toLowerCase()}`,
+        canonicalUrl: `/products/${product.slug}`,
+        schema: [
+            getProductSchema(product),
+            getBreadcrumbSchema([
+                { name: "Home", url: "/" },
+                { name: "Products", url: "/#products" },
+                { name: product.name, url: `/products/${product.slug}` }
+            ])
+        ]
+    };
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
         >
+            <SEO {...seoData} />
             <Navbar />
 
             {/* Breadcrumb */}
@@ -77,7 +96,7 @@ const ProductDetail = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
                         <div className="glass-card pd-hero__card">
-                            <img src={product.image} alt={product.name} />
+                            <OptimizedImage src={product.image} alt={product.name} eager={true} />
                         </div>
                     </motion.div>
                 </div>
@@ -113,7 +132,7 @@ const ProductDetail = () => {
                     <div className="container">
                         <span className="pd-label mono">Configurations</span>
                         <div className="glass-card pd-config-card">
-                            <img src={product.configImage} alt={`${product.name} configurations`} />
+                            <OptimizedImage src={product.configImage} alt={`${product.name} configurations`} />
                         </div>
                     </div>
                 </section>
@@ -134,7 +153,7 @@ const ProductDetail = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1, duration: 0.5 }}
                                 >
-                                    <img src={s.image} alt={s.name} />
+                                    <OptimizedImage src={s.image} alt={s.name} />
                                     <span className="pd-series-name mono">{s.name}</span>
                                 </motion.div>
                             ))}

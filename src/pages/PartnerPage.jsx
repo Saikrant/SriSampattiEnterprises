@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
+import SEO from '../components/SEO/SEO';
 import './PartnerPage.css';
 
 const PARTNER_TYPES = [
@@ -25,6 +26,12 @@ const PartnerPage = () => {
 
     return (
         <>
+            <SEO
+                title="Partner With Us — Architects, Builders & Dealers | Sri Sampatti"
+                description="Partner with Sri Sampatti Enterprises. Exclusive trade pricing and support for architects, contractors, interior designers, and uPVC dealers across South India."
+                keywords="uPVC window dealers Hyderabad, partner uPVC manufacturer, Sudhakar profiles dealership Telangana, uPVC trade pricing"
+                canonicalUrl="/partner"
+            />
             <Navbar />
             <section className="ptn-hero">
                 <div className="container">

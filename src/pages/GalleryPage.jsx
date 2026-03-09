@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
 import PlaceholderImage from '../components/PlaceholderImage/PlaceholderImage';
+import OptimizedImage from '../components/OptimizedImage/OptimizedImage';
+import SEO from '../components/SEO/SEO';
 import { GALLERY_ITEMS } from '../data/galleryItems';
 import './GalleryPage.css';
 
@@ -36,6 +38,12 @@ const GalleryPage = () => {
 
     return (
         <>
+            <SEO
+                title="Photo & Video Gallery | Sri Sampatti Enterprises Hyderabad"
+                description="Browse our gallery of uPVC window and door installations, product photos, and factory images. Premium quality across every project we deliver."
+                keywords="uPVC windows gallery Hyderabad, uPVC installation photos, Sri Sampatti gallery"
+                canonicalUrl="/gallery"
+            />
             <Navbar />
             <section className="gal-hero">
                 <div className="container">
@@ -66,7 +74,7 @@ const GalleryPage = () => {
                         <div className="gal-masonry">
                             {visiblePhotos.map((item, i) => (
                                 <motion.div key={item.id} className="gal-item" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.05 }} onClick={() => setLightbox(item.id)} whileHover={{ scale: 1.02 }}>
-                                    {item.src ? <img src={item.src} alt={item.alt} /> : <PlaceholderImage icon="photo" text="Photo Coming Soon" subtext={item.category} aspectRatio={i % 3 === 0 ? '1/1' : '4/3'} />}
+                                    {item.src ? <OptimizedImage src={item.src} alt={item.alt} /> : <PlaceholderImage icon="photo" text="Photo Coming Soon" subtext={item.category} aspectRatio={i % 3 === 0 ? '1/1' : '4/3'} />}
                                     <div className="gal-item__overlay">
                                         <span className="gal-item__cat mono">{item.category}</span>
                                         <span className="gal-item__alt">{item.alt}</span>

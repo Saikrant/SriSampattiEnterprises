@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
+import SEO from '../components/SEO/SEO';
 import './CareersPage.css';
 
 const JOBS = [
@@ -32,6 +33,12 @@ const CareersPage = () => {
 
     return (
         <>
+            <SEO
+                title="Careers & Jobs — Join Our Team | Sri Sampatti Enterprises"
+                description="Explore job openings at Sri Sampatti Enterprises. Build your career with Hyderabad's most trusted uPVC windows and doors manufacturer."
+                keywords="jobs Sri Sampatti Enterprises, uPVC careers Hyderabad, sales jobs Hyderabad, CAD draftsmen jobs Telangana"
+                canonicalUrl="/careers"
+            />
             <Navbar />
             <section className="car-hero">
                 <div className="container">

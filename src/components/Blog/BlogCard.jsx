@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PlaceholderImage from '../PlaceholderImage/PlaceholderImage';
+import OptimizedImage from '../OptimizedImage/OptimizedImage';
 import './BlogCard.css';
 
 const BlogCard = ({ post }) => (
@@ -14,7 +15,7 @@ const BlogCard = ({ post }) => (
     >
         <div className="blog-card__cover">
             {post.coverImage
-                ? <img src={post.coverImage} alt={post.title} />
+                ? <OptimizedImage src={post.coverImage} alt={post.title} />
                 : <PlaceholderImage icon="article" text="Article Cover — Coming Soon" aspectRatio="16/9" />
             }
             <span className="blog-card__badge mono">{post.category}</span>

@@ -48,8 +48,8 @@ const Footer = () => {
                             </div>
                         </a>
                         <p className="footer__tagline">
-                            Crafting excellence since 1998. Premium uPVC windows
-                            and doors tailored for modern homes.
+                            Hyderabad's leading uPVC manufacturer. Premium uPVC windows
+                            and doors tailored for modern Indian homes.
                         </p>
                     </div>
 
@@ -84,6 +84,7 @@ const Footer = () => {
                         <span className="footer__heading mono">Factory Address</span>
                         <div className="footer__heading-line" />
                         <p className="footer__address">
+                            Sri Sampatti Enterprises<br />
                             Sy No. 382 (P) Pleasant Hills,<br />
                             Himayatsagar Road (Near ORR, Exit No. 17)<br />
                             Rajendranagar, Hyderabad 500030, Telangana

@@ -32,7 +32,7 @@ const useCountUp = (target, duration = 1800) => {
         return () => observer.disconnect();
     }, [target, duration]);
 
-    return { count, ref };
+    return [count, ref];
 };
 
 const container = {
@@ -52,9 +52,9 @@ const scrollToSection = (id) => {
 };
 
 const Hero = () => {
-    const stat1 = useCountUp(15);
-    const stat2 = useCountUp(500);
-    const stat3 = useCountUp(6);
+    const [count1, ref1] = useCountUp(15);
+    const [count2, ref2] = useCountUp(500);
+    const [count3, ref3] = useCountUp(6);
 
     return (
         <section id="home" className="hero">
@@ -80,13 +80,13 @@ const Hero = () => {
                     </motion.div>
 
                     <motion.h1 className="hero__title" variants={fadeUp}>
-                        Engineered for<br />
-                        <span className="hero__title-white">Indian </span>
-                        <span className="hero__title-accent">Living.</span>
+                        Premium uPVC<br />
+                        <span className="hero__title-white">Windows &amp; </span>
+                        <span className="hero__title-accent">Doors.</span>
                     </motion.h1>
 
                     <motion.p className="hero__sub" variants={fadeUp}>
-                        Premium uPVC windows &amp; doors with German technology.
+                        Hyderabad's trusted uPVC manufacturer. Powered by Sudhakar Profiles with German technology.
                         Serving Telangana, Andhra Pradesh &amp; Karnataka.
                     </motion.p>
 
@@ -116,16 +116,16 @@ const Hero = () => {
 
                     {/* Stats — visible on mobile as compact bar */}
                     <motion.div className="hero__stats" variants={fadeUp}>
-                        <div className="hero__stat" ref={stat1.ref}>
-                            <span className="hero__stat-num">{stat1.count}+</span>
+                        <div className="hero__stat" ref={ref1}>
+                            <span className="hero__stat-num">{count1}+</span>
                             <span className="hero__stat-label mono">Years of Trust</span>
                         </div>
-                        <div className="hero__stat" ref={stat2.ref}>
-                            <span className="hero__stat-num">{stat2.count}+</span>
+                        <div className="hero__stat" ref={ref2}>
+                            <span className="hero__stat-num">{count2}+</span>
                             <span className="hero__stat-label mono">Projects Completed</span>
                         </div>
-                        <div className="hero__stat" ref={stat3.ref}>
-                            <span className="hero__stat-num">{stat3.count}</span>
+                        <div className="hero__stat" ref={ref3}>
+                            <span className="hero__stat-num">{count3}</span>
                             <span className="hero__stat-label mono">Product Lines</span>
                         </div>
                     </motion.div>
@@ -144,7 +144,7 @@ const Hero = () => {
                     <polyline points="6 9 12 15 18 9" />
                 </motion.svg>
             </div>
-        </section>
+        </section >
     );
 };
 

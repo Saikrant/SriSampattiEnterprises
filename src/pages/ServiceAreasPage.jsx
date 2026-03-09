@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
 import { SERVICE_AREAS } from '../data/serviceAreas';
+import SEO from '../components/SEO/SEO';
 import './ServiceAreasPage.css';
 
 const fadeUp = { initial: { opacity: 0, y: 28 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.6 } };
@@ -14,6 +15,12 @@ const ServiceAreasPage = () => {
 
     return (
         <>
+            <SEO
+                title="Service Areas — Telangana, AP & Karnataka | Sri Sampatti"
+                description="Sri Sampatti Enterprises serves Hyderabad, Vijayawada, Visakhapatnam, Bengaluru and 15+ cities across Telangana, Andhra Pradesh and Karnataka. Free site visits available."
+                keywords="uPVC windows Vijayawada, uPVC windows Bangalore, uPVC windows Telangana, uPVC windows Andhra Pradesh, uPVC windows Visakhapatnam, uPVC windows Bengaluru"
+                canonicalUrl="/service-areas"
+            />
             <Navbar />
             <section className="sa-hero">
                 <div className="container">

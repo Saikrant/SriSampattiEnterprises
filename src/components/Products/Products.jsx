@@ -47,8 +47,8 @@ const Products = () => {
                     transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
                     <span className="pill-label">Our Product Range</span>
-                    <h2>Premium uPVC Systems</h2>
-                    <p>German-engineered solutions for every opening</p>
+                    <h2>Premium uPVC Windows &amp; Doors</h2>
+                    <p>German-engineered uPVC systems by Sudhakar Profiles</p>
                 </motion.div>
 
                 {/* Window-frame reveal overlay (desktop only) */}

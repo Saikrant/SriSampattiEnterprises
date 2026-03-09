@@ -6,6 +6,7 @@ import BlogCard from '../components/Blog/BlogCard';
 import PlaceholderImage from '../components/PlaceholderImage/PlaceholderImage';
 import { BLOG_POSTS } from '../data/blogPosts';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO/SEO';
 import './BlogListPage.css';
 
 const CATS = ['All', 'Buying Guide', 'Tips & Care', 'Product Focus', 'Industry News'];
@@ -21,6 +22,12 @@ const BlogListPage = () => {
 
     return (
         <>
+            <SEO
+                title="uPVC Windows & Doors Guide — Tips & Insights | Sri Sampatti"
+                description="Expert tips, buying guides, and industry insights on uPVC windows and doors for Indian homes. From Hyderabad's leading uPVC manufacturer."
+                keywords="uPVC windows guide India, uPVC buying guide Hyderabad, uPVC vs aluminium windows India, best windows for Indian homes"
+                canonicalUrl="/blog"
+            />
             <Navbar />
             <section className="blog-hero">
                 <div className="container">

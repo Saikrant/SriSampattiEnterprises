@@ -44,6 +44,8 @@ const ProductCard = ({ product, index, onLearnMore }) => {
                 style={{ backgroundImage: `url(${product.image})` }}
                 animate={{ scale: hovering ? 1.05 : 1 }}
                 transition={{ duration: 0.5 }}
+                role="img"
+                aria-label={`${product.name} - Premium uPVC Windows & Doors in Hyderabad`}
             />
             <div className="product-card__overlay" />
             <div className="product-card__content">

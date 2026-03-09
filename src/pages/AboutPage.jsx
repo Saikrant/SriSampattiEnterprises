@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
 import PlaceholderImage from '../components/PlaceholderImage/PlaceholderImage';
+import SEO from '../components/SEO/SEO';
 import './AboutPage.css';
 
 const MILESTONES = [
@@ -35,6 +36,12 @@ const AboutPage = () => {
 
     return (
         <>
+            <SEO
+                title="About Us — uPVC Manufacturer Since 1998 | Sri Sampatti Enterprises"
+                description="Crafting premium uPVC windows and doors since 1998. Authorized Sudhakar Profiles fabricator with German manufacturing technology. Based in Rajendranagar, Hyderabad."
+                keywords="Sri Sampatti Enterprises about, uPVC manufacturer Hyderabad since 1998, Sudhakar profiles authorized dealer, uPVC company Hyderabad"
+                canonicalUrl="/about"
+            />
             <Navbar />
             {/* Hero */}
             <section className="about-hero">
